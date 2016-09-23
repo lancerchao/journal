@@ -1,0 +1,22 @@
+9/22/16
+GDB stub
+ - Kitten: A high performance computing (HPC) OS targeted to supercomputers
+ - Palacios: Embeddable Type I VMM for kitten
+ - GDB Remote Serial Protocol (RSP) defines minimal set of commands that any GDB stub should implement
+ - All GDB commands are mapped into RSP commands, which are sent to the GDB stub
+ - GDB stub is in charge of stopping/continuing execution, memory/register examination, etc.
+ - GDB implements breakpoints by changing instruction to INT3 which triggers bp exception
+ - TRAP flag is used to implement single stepping - executes one instruction and stops
+
+- GDB in normal mode is quite different than gdb using gdbstub
+- In one case, gdbstub is responsible for getting debuggee info, in the other, debuggee's info is gathered using ptrace
+Ptrace
+ - A syscall which allows one process to access low-level info about another
+ - Debugger can:
+   1) r/w debuggee's memory
+   2) r/w debuggee's CPU registers
+   3) Notified of system events
+   4) Control execution
+   5) Alter its signal handling
+
+
